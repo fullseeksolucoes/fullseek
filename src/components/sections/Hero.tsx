@@ -13,9 +13,12 @@ export function Hero() {
       viewport={{ once: true }}
     >
       <motion.div className="text-center space-y-4" variants={fadeUp}>
-        <h1 className="text-5xl font-bold font">Criamos soluções digitais</h1>
-        <p className="text-muted-foreground">
-          Sites, Sistemas e softwares sob medida
+        <h1 className="font-heading text-5xl font-semibold">
+          Criamos soluções digitais
+        </h1>
+
+        <p className="font-subtitle text-muted-foreground">
+          Sites, sistemas e softwares sob medida
         </p>
       </motion.div>
     </motion.section>

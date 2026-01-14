@@ -45,7 +45,11 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-geist-sans);
+  /* Fontes customizadas */
+  --font-heading: var(--font-clash), system-ui, sans-serif;
+  --font-subtitle: var(--font-manrope), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -74,6 +78,45 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-body);
   @apply antialiased;
 }
+
+/* =========================
+   Scrollbar – Chrome, Edge, Safari
+   ========================= */
+   ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      #9c0dd9,
+      #490973
+    );
+    border-radius: 999px;
+    border: 2px solid var(--background);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      #8a0fbf,
+      #200940
+    );
+  }
+  
+  /* =========================
+     Firefox
+     ========================= */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #490973 var(--background);
+  }
+  

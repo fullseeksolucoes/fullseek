@@ -3,8 +3,6 @@ import { Inter, Manrope } from "next/font/google";
 
 export const clashDisplay = localFont({
   src: [
-    { path: "../assets/fonts/ClashDisplay/ClashDisplay-Extralight.woff2", weight: "200" },
-    { path: "../assets/fonts/ClashDisplay/ClashDisplay-Light.woff2", weight: "300" },
     { path: "../assets/fonts/ClashDisplay/ClashDisplay-Regular.woff2", weight: "400" },
     { path: "../assets/fonts/ClashDisplay/ClashDisplay-Medium.woff2", weight: "500" },
     { path: "../assets/fonts/ClashDisplay/ClashDisplay-Semibold.woff2", weight: "600" },
