@@ -1,4 +1,5 @@
-import { MotionProvider } from "@/components/motion/MotionProvider";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -8,10 +9,12 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <MotionProvider>
+    <>
+      <Header />
       {children}
+      <Footer />
       <Analytics />
       <SpeedInsights />
-    </MotionProvider>
+    </>
   );
 }
