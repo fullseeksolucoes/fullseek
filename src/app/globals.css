@@ -45,6 +45,11 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
 
+  /* Dark scale */
+  --color-dark-900: var(--dark-900);
+  --color-dark-800: var(--dark-800);
+  --color-dark-700: var(--dark-700);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -52,7 +57,7 @@
 /* =========================
    Dark mode (Fullseek)
    ========================= */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #050d26;
     --foreground: #ededed;
@@ -62,7 +67,7 @@
 
     --border: #200940;
   }
-}
+} */
 
 /* =========================
    Base styles
