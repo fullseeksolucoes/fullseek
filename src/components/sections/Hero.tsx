@@ -1,12 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { fadeUp, stagger } from "@/lib/animations";
+import { whatsappLink } from "@/lib/whatsapp";
+import { trackWhatsApp } from "@/lib/analytics/trackWhatsapp";
+import { AnalyticsLabel } from "@/lib/analytics/types";
+import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] mt-16 overflow-hidden bg-dark-900 text-white" id="banner-hero" aria-label="Seção Principal">
+    <section
+      className="relative min-h-[calc(100vh-4rem)] mt-16 overflow-hidden bg-dark-900 text-white"
+      id="banner-hero"
+      aria-label="Seção Principal"
+    >
       {/* Background glow */}
       <div
         aria-hidden
@@ -29,7 +36,8 @@ export function Hero() {
             md:text-6xl lg:text-7xl
           "
         >
-          Criamos soluções digitais <br className="hidden md:inline" /> que impulsionam negócios
+          Criamos soluções digitais <br className="hidden md:inline" /> que
+          impulsionam negócios
         </motion.h1>
 
         <motion.p
@@ -38,39 +46,25 @@ export function Hero() {
             mt-6 max-w-xl text-lg text-white/70
           "
         >
-          Desenvolvemos sites, sistemas e soluções sob medida para empresas
-          que buscam performance, tecnologia e crescimento.
+          Desenvolvemos sites, sistemas e soluções sob medida para empresas que
+          buscam performance, tecnologia e crescimento.
         </motion.p>
 
-        <motion.div
-          variants={fadeUp}
-          className="mt-10 flex flex-wrap gap-4"
-        >
-          <Link
-            href="https://wa.me/5531990785891?text=Oi,%20acabei%20de%20enviar%20uma%20mensagem%20pelo%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AAs."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              inline-flex items-center justify-center
-              rounded-full bg-primary px-7 py-3
-              text-sm font-semibold text-primary-foreground
-              hover:opacity-90 transition
-            "
+        <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
+          <Button
+            external
+            variant="primary"
+            href={whatsappLink(
+              "Olá! Vim pelo site da Fullseek.\nGostaria de falar com um especialista sobre um projeto."
+            )}
+            onClick={() => trackWhatsApp(AnalyticsLabel.HOME_HERO)}
           >
             Falar com especialista
-          </Link>
+          </Button>
 
-          <Link
-            href="/servicos"
-            className="
-              inline-flex items-center justify-center
-              rounded-full border border-white/20 px-7 py-3
-              text-sm font-semibold text-white
-              hover:bg-white/10 transition
-            "
-          >
+          <Button variant="outline" href="/servicos" external>
             Ver serviços
-          </Link>
+          </Button>
         </motion.div>
       </motion.div>
     </section>

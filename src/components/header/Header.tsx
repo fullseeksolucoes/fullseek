@@ -7,8 +7,7 @@ export function Header() {
     <header
       className="
         fixed top-0 left-0 z-50 w-full
-        backdrop-blur-md
-        bg-background/70
+        bg-background
         border-b border-border
       "
     >

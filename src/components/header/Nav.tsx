@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { Button } from "@/components/ui/button";
 
 const links = [
   { href: "/", label: "Home" },
@@ -19,9 +20,7 @@ export function Nav() {
     <nav className="hidden md:flex items-center gap-8">
       {links.map((link) => {
         const isActive =
-          link.href === "/"
-            ? pathname === "/"
-            : pathname.startsWith(link.href);
+          link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
 
         return (
           <Link
@@ -39,16 +38,9 @@ export function Nav() {
         );
       })}
 
-      <Link
-        href="/contato"
-        className="
-          rounded-full bg-primary px-5 py-2 text-sm font-semibold
-          text-primary-foreground
-          hover:opacity-90 transition
-        "
-      >
+      <Button variant="primary" size="sm" href="/contato" external>
         Falar conosco
-      </Link>
+      </Button>
     </nav>
   );
 }
