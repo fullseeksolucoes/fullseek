@@ -9,13 +9,13 @@ import { FaBullseye, FaRocket, FaLightbulb, FaMapSigns } from "react-icons/fa";
 const features = [
   {
     icon: <FaBullseye className="text-xl" />,
-    title: "Feito para Resultados",
+    title: "Foco em Resultados",
     description:
-      "Sites pensados para conversão, não apenas para existir. Cada elemento tem um propósito estratégico.",
+      "Sites feitos para gerar clientes — não apenas marcar presença online.",
   },
   {
     icon: <FaRocket className="text-xl" />,
-    title: "Rápido & Otimizado",
+    title: "Performance de Alto Nível",
     description:
       "Performance desde a base. Carregamento instantâneo que ranqueia melhor e retém visitantes.",
   },
@@ -27,7 +27,7 @@ const features = [
   },
   {
     icon: <FaMapSigns className="text-xl" />,
-    title: "Processo Simples",
+    title: "Sem Complicação",
     description:
       "Comunicação clara, entregas organizadas e zero burocracia do início ao fim.",
   },
@@ -37,8 +37,8 @@ export function WhyChooseUs() {
   return (
     <section className="relative overflow-hidden bg-background py-24 md:py-32">
       {/* Subtle background glow */}
-      <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-secondary/5 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-0 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
+      {/* <div className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-secondary/5 blur-3xl" /> */}
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-8">
         <motion.div
@@ -69,8 +69,8 @@ export function WhyChooseUs() {
               variants={fadeUp}
               className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground"
             >
-              Cada projeto é uma combinação de estratégia, design e tecnologia
-              para transformar visitantes em clientes reais.
+              Cada projeto é pensado para gerar clientes, combinando estratégia,
+              design e tecnologia em cada detalhe.
             </motion.p>
           </div>
 

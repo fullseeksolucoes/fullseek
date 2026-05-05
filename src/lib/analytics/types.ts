@@ -18,5 +18,5 @@ export enum AnalyticsLabel {
   HEADER_WHATSAPP = "header_whatsapp",
   FOOTER_WHATSAPP = "footer_whatsapp",
   FLOATING_WHATSAPP = "floating_whatsapp",
-  CONTACT_FORM = "contact_form",
+  HOME_CTA = "home_cta",
 }

@@ -7,6 +7,7 @@ import { whatsappLink } from "@/lib/whatsapp";
 import { trackWhatsApp } from "@/lib/analytics/trackWhatsapp";
 import { AnalyticsLabel } from "@/lib/analytics/types";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,13 +30,19 @@ export function Header() {
       `}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Image
-          src="/logo.webp"
-          loading="eager"
-          alt="Fullseek"
-          width={140}
-          height={40}
-        />
+        <Link
+          href="/"
+          aria-label="Fullseek"
+          className="flex items-center space-x-2"
+        >
+          <Image
+            src="/logo.webp"
+            loading="eager"
+            alt="Fullseek"
+            width={140}
+            height={40}
+          />
+        </Link>
         <Nav />
         <Button
           variant="whatsapp"

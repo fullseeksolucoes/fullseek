@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section
       className="relative min-h-screen w-full overflow-hidden bg-background text-white"
-      id="banner-hero"
+      id="hero"
       aria-label="Seção Principal"
     >
       {/* Circuit background */}
@@ -24,11 +24,11 @@ export function Hero() {
         className="absolute inset-0 pointer-events-none z-0"
         style={{
           backgroundImage: `
-            repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(156,163,175,0.06) 39px, rgba(156,163,175,0.06) 40px, transparent 40px, transparent 79px, rgba(156,163,175,0.06) 79px, rgba(156,163,175,0.06) 80px),
-            repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(156,163,175,0.06) 39px, rgba(156,163,175,0.06) 40px, transparent 40px, transparent 79px, rgba(156,163,175,0.06) 79px, rgba(156,163,175,0.06) 80px),
-            radial-gradient(circle at 40px 40px, rgba(156,163,175,0.12) 2px, transparent 2px),
-            radial-gradient(circle at 80px 80px, rgba(156,163,175,0.12) 2px, transparent 2px)
-          `,
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(156,163,175,0.03) 39px, rgba(156,163,175,0.03) 40px, transparent 40px, transparent 79px, rgba(156,163,175,0.03) 79px, rgba(156,163,175,0.03) 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(156,163,175,0.03) 39px, rgba(156,163,175,0.03) 40px, transparent 40px, transparent 79px, rgba(156,163,175,0.03) 79px, rgba(156,163,175,0.03) 80px),
+    radial-gradient(circle at 40px 40px, rgba(156,163,175,0.05) 2px, transparent 2px),
+    radial-gradient(circle at 80px 80px, rgba(156,163,175,0.05) 2px, transparent 2px)
+  `,
           backgroundSize: "80px 80px, 80px 80px, 80px 80px, 80px 80px",
         }}
       />

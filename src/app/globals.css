@@ -6,7 +6,9 @@
 :root {
   /* Base */
   --background: #0c0f12;
+  --background-2: #000;
   --foreground: #ffffff;
+  --card: #1b2026;
 
   /* Brand */
   --primary: #9c0dd9;
@@ -22,7 +24,7 @@
 
   /* Neutral */
   --muted: #f4f4f5;
-  --muted-foreground: #6b7280;
+  --muted-foreground: #8c93a1;
 
   /* UI */
   --border: #e5e7eb;
