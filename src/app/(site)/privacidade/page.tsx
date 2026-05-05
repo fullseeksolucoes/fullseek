@@ -1,3 +1,5 @@
+import { CookieManagerButton } from "@/components/ui/CookieManagerButton";
+
 export const metadata = {
   title: "Política de Privacidade",
 };
@@ -41,16 +43,7 @@ export default function PrivacidadePage() {
         Você pode alterar ou revogar seu consentimento a qualquer momento.
       </p>
 
-      <button
-        onClick={() =>
-          import("@/lib/cookies/openCookieManager").then((m) =>
-            m.openCookieManager()
-          )
-        }
-        className="rounded-lg border px-4 py-2 text-sm"
-      >
-        Gerenciar cookies
-      </button>
+      <CookieManagerButton />
     </section>
   );
 }

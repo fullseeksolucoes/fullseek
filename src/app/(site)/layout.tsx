@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import WhatsappButton from "@/components/sections/WhatsappButton";
 import { CookieBanner } from "@/components/ui/CookieBanner";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -12,9 +13,10 @@ export default function SiteLayout({
   return (
     <>
       <Header />
-      <main className="pt-16">{children}</main>
+      <main>{children}</main>
       <Footer />
-      <CookieBanner />
+      <WhatsappButton />
+      {/* <CookieBanner /> */}
       <Analytics />
       <SpeedInsights />
     </>

@@ -1,22 +1,46 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Nav } from "@/components/header/Nav";
+import { Button } from "@/components/ui/button";
+import { whatsappLink } from "@/lib/whatsapp";
+import { trackWhatsApp } from "@/lib/analytics/trackWhatsapp";
+import { AnalyticsLabel } from "@/lib/analytics/types";
+import Image from "next/image";
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <header
-      className="
-        fixed top-0 left-0 z-50 w-full
-        bg-background
-        border-b border-border
-      "
+      className={`
+        z-50 w-full fixed top-0 left-0 transition-all duration-300 border-b border-transparent
+        ${
+          scrolled
+            ? "bg-background/90 backdrop-blur-sm border-foreground/20 shadow-sm"
+            : "bg-transparent"
+        }
+      `}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        {/* Logo */}
-        <div className="font-heading text-xl font-bold">Fullseek</div>
-
-        {/* Desktop nav */}
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+        <Image src="/logo.webp" alt="Fullseek" width={140} height={40} />
         <Nav />
+        <Button
+          variant="whatsapp"
+          size="sm"
+          href={whatsappLink(
+            "Olá! Vim pelo site da Fullseek.\nGostaria de falar com um especialista sobre um projeto.",
+          )}
+          onClick={() => trackWhatsApp(AnalyticsLabel.HEADER_WHATSAPP)}
+        >
+          Falar com Especialista
+        </Button>
       </div>
     </header>
   );

@@ -1,10 +1,23 @@
+import Cta from "@/components/sections/Cta";
+import Faq from "@/components/sections/Faq";
 import { Hero } from "@/components/sections/Hero";
+import HowItWorks from "@/components/sections/HowItWorks";
+import Services from "@/components/sections/Services";
+import ValueProposition from "@/components/sections/ValueProposition";
+import WhatsappButton from "@/components/sections/WhatsappButton";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <div className="h-screen w-full"></div>
+      <WhyChooseUs />
+      <ValueProposition />
+      <Services />
+      <HowItWorks />
+      <Faq />
+      <Cta />
+      <WhatsappButton />
     </>
   );
 }

@@ -5,20 +5,20 @@
    ========================= */
 :root {
   /* Base */
-  --background: #ffffff;
-  --foreground: #050d26;
+  --background: #0c0f12;
+  --foreground: #ffffff;
 
   /* Brand */
   --primary: #9c0dd9;
   --primary-foreground: #ffffff;
 
-  --secondary: #8a0fbf;
+  --secondary: #8a10bf;
   --secondary-foreground: #ffffff;
 
   /* Dark scale */
-  --dark-900: #050d26;
+  --dark-900: #050c26;
   --dark-800: #200940;
-  --dark-700: #490973;
+  --dark-700: #480972;
 
   /* Neutral */
   --muted: #f4f4f5;
@@ -86,38 +86,29 @@ body {
 /* =========================
    Scrollbar – Chrome, Edge, Safari
    ========================= */
-   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: var(--background);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-      180deg,
-      #9c0dd9,
-      #490973
-    );
-    border-radius: 999px;
-    border: 2px solid var(--background);
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(
-      180deg,
-      #8a0fbf,
-      #200940
-    );
-  }
-  
-  /* =========================
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #9c0dd9, #490973);
+  border-radius: 999px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #8a0fbf, #200940);
+}
+
+/* =========================
      Firefox
      ========================= */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #490973 var(--background);
-  }
-  
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff var(--background);
+}
