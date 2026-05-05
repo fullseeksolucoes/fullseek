@@ -29,7 +29,13 @@ export function Header() {
       `}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Image src="/logo.webp" alt="Fullseek" width={140} height={40} />
+        <Image
+          src="/logo.webp"
+          loading="eager"
+          alt="Fullseek"
+          width={140}
+          height={40}
+        />
         <Nav />
         <Button
           variant="whatsapp"
