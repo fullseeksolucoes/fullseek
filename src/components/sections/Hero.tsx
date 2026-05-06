@@ -70,7 +70,7 @@ export function Hero() {
 
         <motion.div
           variants={fadeUp}
-          className="mt-12 flex flex-wrap justify-center gap-4"
+          className="mt-12 grid grid-cols-1 sm:flex sm:flex-wrap justify-center gap-4"
         >
           <Button
             external
@@ -78,11 +78,12 @@ export function Hero() {
             size="lg"
             href={whatsappLink(DEFAULT_MESSAGE)}
             onClick={() => trackWhatsApp(AnalyticsLabel.HOME_HERO)}
+            className="w-full sm:w-auto"
           >
             Quero um site que vende <FaRocketchat />
           </Button>
 
-          <Button variant="outline" size="lg" href="/servicos" external>
+          <Button variant="outline" size="lg" href="#servicos" className="w-full sm:w-auto">
             Ver serviços
           </Button>
         </motion.div>

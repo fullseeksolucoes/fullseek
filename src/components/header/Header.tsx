@@ -51,6 +51,7 @@ export function Header() {
             "Olá! Vim pelo site da Fullseek.\nGostaria de falar com um especialista sobre um projeto.",
           )}
           onClick={() => trackWhatsApp(AnalyticsLabel.HEADER_WHATSAPP)}
+          className="max-[400px]:px-3 max-[400px]:py-1.5 max-[400px]:text-xs max-[400px]:gap-1"
         >
           Falar com Especialista
         </Button>

@@ -11,7 +11,7 @@ const links = [
 
 export function Nav() {
   return (
-    <nav className="hidden md:flex items-center gap-8">
+    <nav className="hidden lg:flex items-center gap-8">
       {links.map((link) => {
         return (
           <Link
