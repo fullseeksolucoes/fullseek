@@ -57,6 +57,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        {/* Facebook Domain Verification */}
+        <meta name="facebook-domain-verification" content="6pi234y3nvdo79hmsty5wnbjofuf7p" />
         {/* Google Analytics */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
