@@ -13,44 +13,44 @@ const services = [
     icon: <FaRocket className="text-2xl" />,
     title: "Landing Pages",
     description:
-      "Páginas focadas em conversão, criadas para transformar visitantes em contatos e vendas.",
+      "Páginas criadas para converter visitantes em leads e vendas. Design estratégico, SEO nativo e carregamento rápido. Prontas em 7 dias.",
   },
   {
     icon: <CiGlobe className="text-2xl" />,
     title: "Sites Institucionais",
     description:
-      "Sites modernos e rápidos que fortalecem sua marca e geram novas oportunidades.",
+      "Site completo para sua empresa com design responsivo, SEO integrado e painel de atualização simples. Sua marca online 24h. Pronto em 15 dias.",
   },
   {
     icon: <FaCode className="text-2xl" />,
     title: "Sistemas Sob Medida",
     description:
-      "Soluções personalizadas para automatizar processos e escalar seu negócio.",
+      "Automatize processos e centralize operações com um sistema feito sob medida para o seu negócio. Do briefing à entrega com suporte contínuo.",
   },
   {
     icon: <FaSearch className="text-2xl" />,
     title: "SEO & Performance",
     description:
-      "Estrutura otimizada para melhor posicionamento no Google e carregamento rápido.",
+      "Estrutura otimizada desde o código. Carregamento em menos de 2 segundos e boas práticas de SEO para ranquear melhor no Google.",
   },
   {
     icon: <MdOutlineEmail className="text-2xl" />,
     title: "E-mail Corporativo",
     description:
-      "E-mails profissionais com seu domínio para mais credibilidade na comunicação.",
+      "E-mail profissional com seu domínio (@suaempresa.com). Mais credibilidade para sua comunicação com clientes e parceiros.",
   },
   {
     icon: <FaServer className="text-2xl" />,
     title: "Domínio e Hospedagem",
     description:
-      "Tudo configurado para seu site ficar online com segurança e estabilidade.",
+      "Hospedagem estável, certificado SSL gratuito e domínio configurado. Seu site online com segurança e sem preocupação técnica.",
   },
 ];
 
 export function Services() {
   return (
     <section
-      className="relative overflow-hidden bg-background py-24 md:py-32"
+      className="relative overflow-hidden bg-background py-16 md:py-32"
       id="servicos"
       aria-label="Nossos Serviços"
     >
@@ -104,7 +104,6 @@ export function Services() {
               icon={<ServiceIcon delay={i * 0.1}>{service.icon}</ServiceIcon>}
               title={service.title}
               description={service.description}
-              index={i}
             />
           ))}
         </motion.div>

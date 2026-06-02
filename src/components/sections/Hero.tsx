@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 import { whatsappLink } from "@/lib/whatsapp";
+import { scrollToSection } from "@/lib/utils";
 import { trackWhatsApp } from "@/lib/analytics/trackWhatsapp";
 import { AnalyticsLabel } from "@/lib/analytics/types";
 import { Button } from "@/components/ui/button";
@@ -46,31 +47,27 @@ export function Hero() {
             md:text-7xl
           "
         >
-          Seu{" "}
+          Sites profissionais que{" "}
           <span className="text-primary font-bold drop-shadow-[0_0_4px_rgba(168,85,247,0.25)]">
-            negócio
+            geram clientes
           </span>{" "}
-          merece mais do que{" "}
-          <span className="text-primary font-bold drop-shadow-[0_0_4px_rgba(168,85,247,0.25)]">
-            só um site
-          </span>
+          todos os dias
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
-          className="mt-8 max-w-2xl text-lg md:text-xl text-white/70"
+          className="mt-6 max-w-2xl text-lg md:text-xl text-white/70"
         >
-          Na FullSeek, desenvolvemos sites profissionais, rápidos e
-          estratégicos, pensados para transformar{" "}
-          <span className="font-semibold text-white/90">
-            visitantes em clientes de verdade
-          </span>
-          .
+          Entregamos seu site em{" "}
+          <span className="font-semibold text-white/90">7 a 15 dias</span> com{" "}
+          <span className="font-semibold text-white/90">SEO nativo</span>,
+          carregamento rápido e design focado em{" "}
+          <span className="font-semibold text-white/90">conversão</span>.
         </motion.p>
 
         <motion.div
           variants={fadeUp}
-          className="mt-12 grid grid-cols-1 sm:flex sm:flex-wrap justify-center gap-4"
+          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
           <Button
             external
@@ -80,12 +77,15 @@ export function Hero() {
             onClick={() => trackWhatsApp(AnalyticsLabel.HOME_HERO)}
             className="w-full sm:w-auto"
           >
-            Quero um site que vende <FaRocketchat />
+            Solicitar orçamento grátis <FaRocketchat />
           </Button>
 
-          <Button variant="outline" size="lg" href="#servicos" className="w-full sm:w-auto">
-            Ver serviços
-          </Button>
+          <button
+            onClick={() => scrollToSection("servicos")}
+            className="cursor-pointer text-sm text-white/50 transition hover:text-primary"
+          >
+            Ver serviços ↓
+          </button>
         </motion.div>
       </motion.div>
 

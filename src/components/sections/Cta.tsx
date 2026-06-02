@@ -1,20 +1,66 @@
 "use client";
 
+import { useRef, useState, type FormEvent, type ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 import { whatsappLink } from "@/lib/whatsapp";
 import { trackWhatsApp } from "@/lib/analytics/trackWhatsapp";
-import { AnalyticsLabel } from "@/lib/analytics/types";
+import { trackEvent } from "@/lib/analytics/trackEvent";
+import { AnalyticsLabel, AnalyticsAction, AnalyticsCategory } from "@/lib/analytics/types";
 import { Button } from "@/components/ui/button";
 import { FaRocket, FaArrowRight } from "react-icons/fa";
+import { formatPhone } from "@/lib/phone-mask";
 
 const CTA_MESSAGE =
   "Olá! Vim pelo site da FullSeek e quero dar o próximo passo. Vamos conversar?";
 
 export default function Cta() {
+  const [formSent, setFormSent] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formLoading, setFormLoading] = useState(false);
+  const [phoneValue, setPhoneValue] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const message = formData.get("message") as string;
+
+    setFormLoading(true);
+    setFormError("");
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, message }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || "Erro ao enviar");
+
+      trackEvent({ action: AnalyticsAction.SUBMIT_FORM, category: AnalyticsCategory.FORM, label: AnalyticsLabel.HOME_CTA });
+
+      setFormSent(true);
+      setPhoneValue("");
+      form.reset();
+      setTimeout(() => setFormSent(false), 4000);
+    } catch (err) {
+      setFormError(err instanceof Error ? err.message : "Erro ao enviar");
+      setTimeout(() => setFormError(""), 6000);
+    } finally {
+      setFormLoading(false);
+    }
+  };
+
   return (
     <section
-      className="relative overflow-hidden bg-background py-24 md:py-32"
+      className="relative overflow-hidden bg-background py-16 md:py-32"
       id="cta"
       aria-label="Pronto para começar?"
     >
@@ -81,6 +127,80 @@ export default function Cta() {
           Resposta garantida em até{" "}
           <span className="font-semibold text-primary">2 horas</span>
         </motion.p>
+
+        {/* Contact form */}
+        <motion.div
+          variants={fadeUp}
+          className="mx-auto mt-16 max-w-lg"
+        >
+          <div className="mb-6 flex items-center gap-4">
+            <span className="h-px flex-1 bg-white/10" />
+            <span className="text-xs font-medium uppercase tracking-wider text-white/30">
+              Ou prefere enviar uma mensagem
+            </span>
+            <span className="h-px flex-1 bg-white/10" />
+          </div>
+          <form
+            ref={formRef}
+            onSubmit={handleFormSubmit}
+            className="space-y-4 text-left"
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="cta-name" className="sr-only">Nome</label>
+                <input
+                  id="cta-name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Seu nome"
+                  className="w-full rounded-xl border border-white/10 bg-card px-4 py-3 text-sm text-white placeholder:text-white/30 transition focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                />
+              </div>
+              <div>
+                <label htmlFor="cta-email" className="sr-only">Email</label>
+                <input
+                  id="cta-email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="Seu email"
+                  className="w-full rounded-xl border border-white/10 bg-card px-4 py-3 text-sm text-white placeholder:text-white/30 transition focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="cta-phone" className="sr-only">Telefone</label>
+              <input
+                id="cta-phone"
+                name="phone"
+                type="tel"
+                required
+                placeholder="(31) 99999-9999"
+                value={phoneValue}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setPhoneValue(formatPhone(e.target.value))}
+                className="w-full rounded-xl border border-white/10 bg-card px-4 py-3 text-sm text-white placeholder:text-white/30 transition focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+              />
+            </div>
+            <div>
+              <label htmlFor="cta-message" className="sr-only">Mensagem</label>
+              <textarea
+                id="cta-message"
+                name="message"
+                rows={3}
+                placeholder="Conte um pouco sobre seu projeto (opcional)"
+                className="w-full resize-none rounded-xl border border-white/10 bg-card px-4 py-3 text-sm text-white placeholder:text-white/30 transition focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={formLoading}
+              className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+            >
+              {formLoading ? "Enviando..." : formSent ? "Enviado ✓" : formError ? "Erro ao enviar" : "Solicitar orçamento"}
+            </button>
+          </form>
+        </motion.div>
       </motion.div>
     </section>
   );

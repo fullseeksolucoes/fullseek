@@ -15,28 +15,32 @@ const faqItems = [
     answer:
       "Nossa mensalidade cobre hospedagem, manutenção, suporte e melhorias contínuas. Assim, você não precisa se preocupar com a parte técnica e mantém seu site sempre rápido, seguro e atualizado.",
   },
-
   {
     question: "O site será otimizado para mecanismos de busca (SEO)?",
     answer:
       "Sim. Todos os nossos projetos são desenvolvidos com estrutura limpa, carregamento rápido e as melhores práticas de SEO para garantir uma boa posição no Google desde o lançamento.",
   },
   {
-    question: "O site será responsivo para celulares?",
+    question: "Preciso ter conhecimentos técnicos para gerenciar o site?",
     answer:
-      "Com certeza. Todos os nossos projetos são desenvolvidos com design responsivo, garantindo uma experiência perfeita em smartphones, tablets e desktops.",
+      "Não. Cuidamos de tudo: hospedagem, domínio, atualizações de segurança e manutenção. Você só precisa focar no seu negócio. Se precisar de alguma alteração, é só nos chamar.",
   },
   {
-    question: "Vocês oferecem suporte após a entrega?",
+    question: "Vocês criam sites em WordPress ou plataformas prontas?",
     answer:
-      "Sim. Durante o plano ativo, você conta com suporte contínuo para ajustes, melhorias e acompanhamento do desempenho do seu site.",
+      "Criamos sites do zero com tecnologia moderna — nada de WordPress lento ou temas genéricos. Seu site é único, rápido, seguro e feito sob medida para o seu negócio.",
+  },
+  {
+    question: "Qual o investimento médio para criar um site?",
+    answer:
+      "O valor varia conforme o projeto. Landings pages têm um investimento inicial acessível, e sites institucionais completos contam com condições especiais. Solicite um orçamento gratuito e sem compromisso.",
   },
 ];
 
 export function Faq() {
   return (
     <section
-      className="relative overflow-hidden bg-background py-24 md:py-32"
+      className="relative overflow-hidden bg-background py-16 md:py-32"
       id="faq"
       aria-label="Perguntas Frequentes"
     >

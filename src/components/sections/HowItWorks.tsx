@@ -40,7 +40,7 @@ const steps = [
 export function HowItWorks() {
   return (
     <section
-      className="relative overflow-hidden bg-background py-24 md:py-32"
+      className="relative overflow-hidden bg-background py-16 md:py-32"
       id="como-funciona"
       aria-label="Como Funciona"
     >

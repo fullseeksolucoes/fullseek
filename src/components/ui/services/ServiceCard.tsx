@@ -6,14 +6,12 @@ interface ServiceCardProps {
   icon: ReactNode;
   title: string;
   description: string;
-  index: number;
 }
 
 export function ServiceCard({
   icon,
   title,
   description,
-  index,
 }: ServiceCardProps) {
   return (
     <motion.div

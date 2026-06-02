@@ -9,15 +9,16 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { whatsappLink } from "@/lib/whatsapp";
+import { scrollToSection } from "@/lib/utils";
 import { trackWhatsApp } from "@/lib/analytics/trackWhatsapp";
 import { AnalyticsLabel } from "@/lib/analytics/types";
 
 const shortcuts = [
-  { label: "Home", href: "#banner-hero" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Como Funciona", href: "#como-funciona" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contato", href: "#cta" },
+  { id: "hero", label: "Home" },
+  { id: "servicos", label: "Serviços" },
+  { id: "como-funciona", label: "Como Funciona" },
+  { id: "faq", label: "FAQ" },
+  { id: "cta", label: "Contato" },
 ];
 
 export function Footer() {
@@ -48,6 +49,7 @@ export function Footer() {
                 href={whatsappLink("Olá! Vim pelo site da Fullseek.")}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="WhatsApp"
                 onClick={() => trackWhatsApp(AnalyticsLabel.FOOTER_WHATSAPP)}
                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60 transition hover:bg-primary/20 hover:text-primary"
               >
@@ -57,6 +59,7 @@ export function Footer() {
                 href="https://www.instagram.com/full.seek/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60 transition hover:bg-primary/20 hover:text-primary"
               >
                 <FaInstagram className="text-lg" />
@@ -65,6 +68,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/fullseek/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60 transition hover:bg-primary/20 hover:text-primary"
               >
                 <FaLinkedin className="text-lg" />
@@ -80,12 +84,12 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {shortcuts.map((item) => (
                 <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-white/50 transition hover:text-primary"
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className="cursor-pointer text-sm text-white/50 transition hover:text-primary"
                   >
                     {item.label}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>

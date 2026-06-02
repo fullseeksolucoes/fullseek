@@ -1,16 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Nav } from "@/components/header/Nav";
+import { MobileMenu } from "@/components/header/MobileMenu";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/whatsapp";
 import { trackWhatsApp } from "@/lib/analytics/trackWhatsapp";
 import { AnalyticsLabel } from "@/lib/analytics/types";
 import Image from "next/image";
-import Link from "next/link";
+import { FiMenu } from "react-icons/fi";
+import { scrollToSection } from "@/lib/utils";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/";
+
+  const handleLogoClick = useCallback(() => {
+    if (isHome) {
+      scrollToSection("hero");
+    } else {
+      router.push("/");
+    }
+  }, [isHome, router]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -30,10 +45,10 @@ export function Header() {
       `}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link
-          href="/"
+        <button
+          onClick={handleLogoClick}
           aria-label="Fullseek"
-          className="flex items-center space-x-2"
+          className="flex cursor-pointer items-center space-x-2"
         >
           <Image
             src="/logo.webp"
@@ -42,20 +57,32 @@ export function Header() {
             width={140}
             height={40}
           />
-        </Link>
+        </button>
         <Nav />
-        <Button
-          variant="whatsapp"
-          size="sm"
-          href={whatsappLink(
-            "Olá! Vim pelo site da Fullseek.\nGostaria de falar com um especialista sobre um projeto.",
-          )}
-          onClick={() => trackWhatsApp(AnalyticsLabel.HEADER_WHATSAPP)}
-          className="max-[400px]:px-3 max-[400px]:py-1.5 max-[400px]:text-xs max-[400px]:gap-1"
-        >
-          Falar com Especialista
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button
+            variant="whatsapp"
+            size="sm"
+            href={whatsappLink(
+              "Olá! Vim pelo site da Fullseek.\nGostaria de falar com um especialista sobre um projeto.",
+            )}
+            onClick={() => trackWhatsApp(AnalyticsLabel.HEADER_WHATSAPP)}
+            className="hidden! lg:inline-flex!"
+          >
+            Falar com Especialista
+          </Button>
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-white/60 transition hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
+            aria-label="Abrir menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            <FiMenu className="text-xl" />
+          </button>
+        </div>
       </div>
+      <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
   );
 }

@@ -3,8 +3,6 @@ import Script from "next/script";
 import "./globals.css";
 import { clashDisplay, inter, manrope } from "./fonts";
 
-const baseUrl = "https://www.fullseek.com.br";
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -14,12 +12,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fullseek.com.br"),
   title: {
-    default: "Fullseek | Desenvolvimento de Sites e Sistemas",
+    default: "Fullseek | Criação de Sites em Belo Horizonte",
     template: "%s | Fullseek",
   },
   description:
-    "A Fullseek desenvolve sites, sistemas e soluções digitais sob medida para empresas que buscam performance, tecnologia e crescimento.",
-  keywords: ["desenvolvimento de sites", "sistemas web", "Fullseek", "soluções digitais", "tecnologia"],
+    "Criação de sites profissionais em Belo Horizonte. Landing pages, sites institucionais e sistemas sob medida. SEO nativo, design responsivo e entrega rápida. Orçamento grátis.",
+  keywords: ["criação de sites", "desenvolvimento de sites", "Fullseek", "sites em Belo Horizonte", "landing page", "SEO", "agência de sites BH"],
   robots: {
     index: true,
     follow: true,
@@ -28,14 +26,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "Fullseek",
-    title: "Fullseek | Desenvolvimento de Sites e Sistemas",
-    description: "A Fullseek desenvolve sites, sistemas e soluções digitais sob medida para empresas que buscam performance, tecnologia e crescimento.",
+    title: "Fullseek | Criação de Sites em Belo Horizonte",
+    description: "Criação de sites profissionais em BH. Landing pages, sites institucionais e sistemas sob medida com SEO nativo e entrega rápida.",
+    url: "https://www.fullseek.com.br",
     images: [
       {
-        url: "/logo.webp",
-        width: 512,
-        height: 512,
-        alt: "Fullseek Logo",
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Fullseek - Criação de Sites em Belo Horizonte",
       },
     ],
   },
@@ -43,9 +42,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@fullseek",
     creator: "@fullseek",
-    title: "Fullseek | Desenvolvimento de Sites e Sistemas",
-    description: "A Fullseek desenvolve sites, sistemas e soluções digitais sob medida para empresas que buscam performance, tecnologia e crescimento.",
-    images: ["/logo.webp"],
+    title: "Fullseek | Criação de Sites em Belo Horizonte",
+    description: "Criação de sites profissionais em BH. Landing pages, sites institucionais e sistemas sob medida com SEO nativo e entrega rápida.",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -75,6 +74,7 @@ fbq('track', 'PageView');
           `}
         </Script>
         <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             height="1"
             width="1"
@@ -108,7 +108,13 @@ fbq('track', 'PageView');
             name: "Fullseek",
             url: "https://www.fullseek.com.br",
             logo: "https://www.fullseek.com.br/logo.webp",
-            description: "A Fullseek desenvolve sites, sistemas e soluções digitais sob medida para empresas que buscam performance, tecnologia e crescimento.",
+            description: "Criação de sites profissionais em Belo Horizonte. Landing pages, sites institucionais e sistemas sob medida.",
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+55-31-99078-5891",
+              contactType: "sales",
+              availableLanguage: ["Portuguese"],
+            },
             sameAs: [
               "https://www.instagram.com/fullseek",
               "https://www.linkedin.com/company/fullseek",
@@ -125,12 +131,7 @@ fbq('track', 'PageView');
             "@type": "WebSite",
             name: "Fullseek",
             url: "https://www.fullseek.com.br",
-            description: "Desenvolvimento de sites, sistemas e soluções digitais sob medida.",
-            potentialAction: {
-              "@type": "SearchAction",
-              target: "https://www.fullseek.com.br/search?q={search_term_string}",
-              "query-input": "required name=search_term_string",
-            },
+            description: "Criação de sites profissionais em Belo Horizonte. Landing pages, sites institucionais e sistemas sob medida.",
           })}
         </Script>
       </head>
