@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import { whatsappLink } from "@/lib/whatsapp";
 import { scrollToSection } from "@/lib/utils";
 import { trackWhatsApp } from "@/lib/analytics/trackWhatsapp";
 import { AnalyticsLabel } from "@/lib/analytics/types";
+import { getLenis } from "@/components/providers/lenis-provider";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -39,6 +41,12 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
     const panel = panelRef.current;
     if (!panel) return;
+
+    const lenis = getLenis();
+    if (lenis) lenis.stop();
+
+    const onTouchMove = (e: TouchEvent) => e.preventDefault();
+    document.addEventListener("touchmove", onTouchMove, { passive: false });
 
     const focusable = panel.querySelectorAll<HTMLElement>(
       'button, a, input, [tabindex]:not([tabindex="-1"])',
@@ -73,18 +81,22 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("touchmove", onTouchMove);
+
+      if (lenis) lenis.start();
+
       previousFocusRef.current?.focus();
     };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
-  return (
-    <div id="mobile-menu" className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu de navegação">
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
+  const menu = (
+    <div id="mobile-menu" className="fixed inset-0 z-[100] lg:hidden" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+      <div className="absolute inset-0 bg-[#0c0f12]" onClick={onClose} aria-hidden="true" />
       <div
         ref={panelRef}
-        className="absolute right-0 top-0 flex h-full w-72 flex-col bg-background border-l border-white/10 shadow-2xl"
+        className="absolute right-0 top-0 flex h-full w-72 flex-col bg-[#0c0f12] border-l border-white/10 shadow-2xl"
       >
         <div className="flex items-center justify-end p-6">
           <button
@@ -123,4 +135,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       </div>
     </div>
   );
+
+  if (typeof document === "undefined") return null;
+  return createPortal(menu, document.body);
 }

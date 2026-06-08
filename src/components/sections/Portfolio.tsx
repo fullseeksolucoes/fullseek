@@ -14,32 +14,37 @@ const projects = [
   },
   {
     name: "NT Passeios Náuticos",
-    tag: "Site Institucional",
-    result: "Site completo com galeria e informações sobre passeios náuticos em BH.",
+    tag: "Landing Page",
+    result:
+      "Site completo com galeria e informações sobre passeios náuticos em BH.",
     image: "/portfolio/ntpasseiosnauticos.webp",
   },
   {
     name: "Nery Assessoria",
     tag: "Site Institucional",
-    result: "Site profissional para assessoria com captura de leads qualificados.",
+    result:
+      "Site profissional para assessoria com captura de leads qualificados.",
     image: "/portfolio/neryassessoria.webp",
   },
   {
     name: "Beltrack",
-    tag: "Site Institucional",
-    result: "Plataforma de rastreamento com design moderno e informações claras.",
+    tag: "Landing Page",
+    result:
+      "Plataforma de rastreamento com design moderno e informações claras.",
     image: "/portfolio/beltrack.webp",
   },
   {
     name: "MD Transfers OS",
-    tag: "Site Institucional",
-    result: "Site para transportes com formulário de orçamento e contato direto.",
+    tag: "Landing Page",
+    result:
+      "Site para transportes com formulário de orçamento e contato direto.",
     image: "/portfolio/mdtransfersos.webp",
   },
   {
     name: "SS Retifica",
     tag: "Site Institucional",
-    result: "Site para retífica de motores com apresentação dos serviços especializados.",
+    result:
+      "Site para retífica de motores com apresentação dos serviços especializados.",
     image: "/portfolio/ssretifica.webp",
   },
 ];
