@@ -66,6 +66,7 @@ export function Header() {
             href={whatsappLink(
               "Olá! Vim pelo site da Fullseek.\nGostaria de falar com um especialista sobre um projeto.",
             )}
+            target="_blank"
             onClick={() => trackWhatsApp(AnalyticsLabel.HEADER_WHATSAPP)}
             className="hidden! lg:inline-flex!"
           >
